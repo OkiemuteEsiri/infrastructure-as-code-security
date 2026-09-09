@@ -1,0 +1,40 @@
+{
+  "resources": [
+    {
+      "type": "object_storage",
+      "name": "public-artifacts",
+      "tags": {"owner": "platform", "environment": "lab"},
+      "config": {"public": true, "encrypted": false}
+    },
+    {
+      "type": "security_group",
+      "name": "admin-sg",
+      "tags": {"owner": "platform", "environment": "lab"},
+      "config": {"ingress": [{"port": 22, "cidr": "0.0.0.0/0"}]}
+    },
+    {
+      "type": "database",
+      "name": "orders-db",
+      "tags": {"owner": "data", "environment": "lab"},
+      "config": {"publicly_accessible": true, "encrypted": false}
+    },
+    {
+      "type": "iam_policy",
+      "name": "build-role-policy",
+      "tags": {"owner": "devops", "environment": "lab"},
+      "config": {"actions": ["*"], "resources": ["*"]}
+    },
+    {
+      "type": "audit_logging",
+      "name": "central-audit",
+      "tags": {"owner": "security", "environment": "lab"},
+      "config": {"enabled": false}
+    },
+    {
+      "type": "object_storage",
+      "name": "private-backups",
+      "tags": {"owner": "platform", "environment": "lab"},
+      "config": {"public": false, "encrypted": true}
+    }
+  ]
+}
